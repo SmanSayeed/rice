@@ -1,7 +1,32 @@
 @extends('layouts.master')
 @section('content')
 
+<?php
+    session_start();
+    //require 'vendor/autoload.php';
+    use cloudabis_sdk\ApiManager\CloudABISAPI;
+    use cloudabis_sdk\Models\CloudABISBiometricRequest;
+    use cloudabis_sdk\Models\EnumOperationName;
+    use cloudabis_sdk\Utilities\CloudABISConstant;
+    use cloudabis_sdk\Utilities\CloudABISResponseParser;
 
+    define('CloudABIS_API_URL', 'https://fpsvr101.cloudabis.com/v1/');
+    define('CloudABISAppKey', '54a4cf14b9fc4e3cbc5fc4d8058d5c11');
+    define('CloudABISSecretKey', 'GVgN/8Q3z/P/5RmpBf6EONq9G/0=');
+    define('CloudABISCustomerKey', '19713DF218AC45E6A03B8E2372705E64');
+    define('ENGINE_NAME', 'FPFF02');
+    define('TEMPLATE_FORMAT', 'ISO');
+    //Read token from CloudABIS Server
+    $cloudABISAPI = new CloudABISAPI(CloudABISAppKey, CloudABISSecretKey, CloudABIS_API_URL);
+    $token = $cloudABISAPI->GetToken();
+    if ( ! is_null($token) && isset($token->access_token) != "" )
+        $_SESSION['access_token'] = $token->access_token;
+    else
+        SetStatus("CloudABIS Not Authorized!. Please check credentails");
+
+
+
+?>
 
 {{-- <form action="{{route('store_taker')}}" method="post" enctype="multipart/form-data">
         @csrf
@@ -77,6 +102,24 @@
                           </div>
 
                           <div class="form-group">
+                            <label for="">Select Area</label>
+                            @php
+                            use App\Area;
+                            $area = new Area();
+                            $data = $area->get();
+
+                             @endphp
+
+                            <select name="area_id" class="form-control">
+                                <option>--- Select Area ---</option>
+                            @foreach($data as $d)
+                            <option value="{{$d->id}}">{{$d->name}}</option>
+                            @endforeach
+
+                            </select>
+                          </div>
+
+                          <div class="form-group">
                             <label for="">Village</label>
                             <input type="text" class="form-control" id="" placeholder="Enter  Address1" name="address1" >
                           </div>
@@ -105,6 +148,11 @@
                             <label for="">Phone</label>
                             <input type="text" class="form-control" id="" placeholder="Phone" name="phone">
                           </div>
+
+                          <div class="form-group">
+                          <input class="" type="button" name="biometricCapture" value="Biometric Capture" onclick="captureBiometric()">
+                          <input type="hidden" name="templateXML" id="templateXML" value="">
+                        </div>
 
                         <div class="form-group">
                           <label for="exampleInputFile">File input</label>

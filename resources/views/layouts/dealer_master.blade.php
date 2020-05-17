@@ -99,7 +99,7 @@
               <li class="nav-item">
                 <a href="{{asset('dealer/find_taker')}}" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>আই ডি দিয়ে সার্চ করুন</p>
+                  <p>ফিংগারপ্রিন্ট দিয়ে ভেরিফাই করুন</p>
                 </a>
               </li>
 

@@ -261,6 +261,11 @@
 <script src="{{asset('user')}}/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 
 
+<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js' type='text/javascript'> </script>
+<script src='scripts/CloudABIS-ScanR.js'> </script>
+<script src='scripts/CloudABIS-Helper.js'> </script>
+
+
 <!-- page script -->
 <script>
   $(function () {

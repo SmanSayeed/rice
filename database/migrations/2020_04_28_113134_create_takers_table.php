@@ -22,6 +22,7 @@ class CreateTakersTable extends Migration
 
             $table->text('address1');
             $table->text('address2',256);
+            $table->bigInteger('area_id');
             $table->string('nid',256);
 
             $table->string('bid',256);

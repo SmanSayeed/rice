@@ -55,7 +55,7 @@
                       <div class="card-body">
                         <label> Dealer Name: </label>
                         <div class="form-group">
-                            <label>Select</label>
+
                             <select class="form-control" name="dealer_id" >
                                 <option>--- Select Dealer ---</option>
                                 @if(!empty($data))
@@ -69,8 +69,34 @@
 
                           </div>
 
+                          <div class="form-group">
+                            <label>Select Area</label>
+
+                            @php
+                            use App\Area;
+                            $area = new Area();
+                            $data = $area->get();
+
+                             @endphp
+
+                            <select class="form-control" name="area_id" >
+                                <option>--- Select Area ---</option>
+                                @if(!empty($data))
+                                  @foreach($data as $d)
+                                    <option value="{{ $d->id }}">{{ $d->name }} </option>
+                                  @endforeach
+                                @endif
+                            </select>
 
 
+
+                          </div>
+
+
+                          <div class="form-group">
+                            <label for="">Taker Limit</label>
+                            <input type="number" class="form-control" id="" placeholder="Enter Amount" name="taker_limit" >
+                          </div>
 
                         <div class="form-group">
                           <label for="">Amount</label>

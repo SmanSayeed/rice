@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRiceTable extends Migration
+class CreateAreasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateRiceTable extends Migration
      */
     public function up()
     {
-        Schema::create('rice', function (Blueprint $table) {
+        Schema::create('areas', function (Blueprint $table) {
             $table->id();
-            $table->string('amount');
-            $table->bigInteger('area_id');
-            $table->bigInteger('dealer_id');
-            $table->int('taker_limit');
-            $table->string('rice_giving_time');
+            $table->string('name');
+            $table->string('district')->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ class CreateRiceTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rice');
+        Schema::dropIfExists('areas');
     }
 }

@@ -50,11 +50,12 @@ class AdminController extends Controller
        $d = new Dealer();
 
        $d->name =  $request->name;
+
+
        $d->email =  $request->email;
        $d->phone =  $request->phone;
        $d->address =  $request->address;
        $d->password = Hash::make($request->password);
-
 
         $file = $request->file('myimg');
         $destinationPath = public_path(). '/images/dealer_image';
@@ -170,6 +171,7 @@ class AdminController extends Controller
        $d->mother =  $request->mother;
        $d->address1 =  $request->address1;
        $d->address2 =  $request->address2;
+       $d->area_id =  $request->area_id;
 
        $d->nid =  $request->nid;
 
@@ -235,6 +237,9 @@ class AdminController extends Controller
     public function store_rice_amount(Request $request){
         $r = new Rice();
         $r->dealer_id =  $request->dealer_id;
+
+       $r->area_id =  $request->area_id;
+       $r->taker_limit =  $request->taker_limit;
         $r->amount =  $request->amount;
         $r->rice_giving_time =  $request->rice_giving_time;
 
