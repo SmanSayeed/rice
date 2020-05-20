@@ -16,9 +16,15 @@ class CreateTakersTable extends Migration
         Schema::create('takers', function (Blueprint $table) {
             $table->id();
 
-            $table->string('name',256);
+            $table->string('taker_name',256);
             $table->string('father',256);
             $table->string('mother',256);
+
+
+            $table->text('husband')->nullable;
+            $table->text('birthdate');
+
+            $table->text('gender');
 
             $table->text('address1');
             $table->text('address2',256);
@@ -34,6 +40,7 @@ class CreateTakersTable extends Migration
             $table->string('card_start_date',256);
             $table->string('card_end_date',256);
 
+            $table->integer('approve_key')->default(1);
 
             $table->timestamps();
 

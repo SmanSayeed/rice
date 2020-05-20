@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Dealer;
 use App\Admin;
 use App\Taker;
+use App\GIven;
 use App\User;
 use App\Rice;
 use Illuminate\Support\Facades\Hash;
@@ -154,6 +155,20 @@ class AdminController extends Controller
 
 
      }
+     public function approve_dealer($id){
+        $d = new Dealer();
+        if($d->where('id', $id)->update(['approve_key' => '2',]))
+            return back()->with('success', 'Approved successfully');
+
+
+      }
+      public function unapprove_dealer($id){
+        $d = new Dealer();
+        if($d->where('id', $id)->update(['approve_key' => '1',]))
+            return back()->with('success', 'Unapproved successfully');
+
+
+      }
 
     public function create_taker(){
 
@@ -166,12 +181,18 @@ class AdminController extends Controller
 
        $d = new Taker();
 
-       $d->name =  $request->name;
+       $d->taker_name =  $request->taker_name;
        $d->father =  $request->father;
        $d->mother =  $request->mother;
        $d->address1 =  $request->address1;
        $d->address2 =  $request->address2;
        $d->area_id =  $request->area_id;
+
+       $d->husband =  $request->husband;
+
+       $d->birthdate =  $request->birthdate;
+
+       $d->gender =  $request->gender;
 
        $d->nid =  $request->nid;
 
@@ -204,6 +225,29 @@ class AdminController extends Controller
         $data = $d->get();
 
         return view('admin.t.show',['data'=>$data]);
+
+    }
+
+    public function add_taker_rice_amount(){
+
+        $d = new Taker();
+        $data = $d->get();
+
+        return view('admin.t.add_taker_rice_amount',['data'=>$data]);
+
+    }
+
+    public function store_taker_rice_amount(Request $request){
+
+        $data = implode(',',$request->taker);
+        // echo '<pre>'.$request->taker.'</pre>';
+        print_r($data);
+        die();
+
+        $d = new Taker();
+        $data = $d->get();
+
+        return back();
 
     }
 
@@ -240,7 +284,7 @@ class AdminController extends Controller
 
        $r->area_id =  $request->area_id;
        $r->taker_limit =  $request->taker_limit;
-        $r->amount =  $request->amount;
+        $r->dealer_rice_amount =  $request->dealer_rice_amount;
         $r->rice_giving_time =  $request->rice_giving_time;
 
         $r->save();
@@ -285,7 +329,7 @@ class AdminController extends Controller
         $d = new Rice();
 
 
-        if( $d->where('id', $request->id)->update(['amount' => $request->amount,'rice_giving_time'=>$request->rice_giving_time]))
+        if( $d->where('id', $request->id)->update(['dealer_rice_amount' => $request->dealer_rice_amount,'rice_giving_time'=>$request->rice_giving_time]))
                return back()->with('success', ' Updated successfully');
 
 
@@ -300,6 +344,139 @@ class AdminController extends Controller
 
 
      }
+
+     public function final_report_list(){
+        $r = new Rice();
+        $d = new Dealer();
+
+        $data = DB::table('dealers')
+          ->get();
+        //   echo '<pre>';
+        //   print_r($data);
+        //   echo '</pre>';die();
+
+       return view('admin.report.final_report_list',['data'=>$data]);
+
+
+    }
+
+
+
+
+     public function final_report($id){
+        //  echo $id; die();
+        $r = new Rice();
+        $d = new Dealer();
+
+        $dealer = $d->where('id',$id)->first();
+
+        $area = DB::table('rice')
+        ->join('dealers', 'rice.dealer_id', '=', 'dealers.id')
+        ->join('areas', 'rice.area_id', '=', 'areas.id')
+
+         ->select('dealers.*', 'areas.*')
+
+         ->where('dealers.id','=',$id)
+          ->first();
+
+
+        //   echo '<pre>';
+        //   print_r($area);
+        //   echo '</pre>';die();
+
+        $data = DB::table('dealers')
+        ->join('rice', 'dealers.id', '=', 'rice.dealer_id')
+        ->join('givens', 'dealers.id', '=', 'givens.dealer_id')
+        ->join('takers', 'takers.id', '=', 'givens.taker_id')
+         ->select('dealers.*', 'rice.*','givens.*','takers.*')
+
+         ->where('dealers.id','=',$id)
+          ->get();
+
+
+        //   echo '<pre>';
+        //   print_r($data);
+        //   echo '</pre>';die();
+
+       return view('admin.report.show_final_report',['data'=>$data,'dealer'=>$dealer,'area'=>$area]);
+
+    }
+
+    public function daily_report_list(){
+        $r = new Rice();
+        $d = new Dealer();
+
+
+
+        $data = DB::table('dealers')
+          ->get();
+        //   echo '<pre>';
+        //   print_r($data);
+        //   echo '</pre>';die();
+
+       return view('admin.report.daily_report_list',['data'=>$data]);
+
+    }
+
+
+
+
+    public function daily_report($id){
+        //  echo $id; die();
+        $r = new Rice();
+        $d = new Dealer();
+        $dealer = $d->where('id',$id)->first();
+
+        $area = DB::table('rice')
+        ->join('dealers', 'rice.dealer_id', '=', 'dealers.id')
+        ->join('areas', 'rice.area_id', '=', 'areas.id')
+
+         ->select('dealers.*', 'areas.*')
+
+         ->where('dealers.id','=',$id)
+          ->first();
+
+          $g = new Given();
+
+
+          $rice = $r->where('dealer_id',$id)->first();
+          $given = $g->where('dealer_id',$id)->get();
+
+
+          // $data = DB::table('dealers')
+          // ->join('rice', 'dealers.id', '=', 'rice.dealer_id')
+          // ->join('givens', 'dealers.id', '=', 'givens.dealer_id')
+          // ->join('takers', 'takers.id', '=', 'givens.taker_id')
+          //  ->select('dealers.*', 'rice.*','givens.*','takers.*')
+
+          //  ->where('dealers.id','=',$id)
+          //   ->get();
+
+
+          $data = DB::table('rice')
+
+          ->join('takers', 'rice.area_id', '=', 'takers.area_id')
+
+           ->select( 'rice.*','takers.*')
+
+           ->where('rice.dealer_id','=',$id)
+            ->get();
+
+          //   echo '<pre>';
+          //   print_r($data);
+          //   echo '</pre>';die();
+
+        //  return view('dealer.home',['dealer'=>$dealer,'rice'=>$rice,'given'=>$given,'data'=>$data]);
+
+
+        //   echo '<pre>';
+        //   print_r($data);
+        //   echo '</pre>';die();
+
+       return view('admin.report.show_daily_report',['data'=>$data,'dealer'=>$dealer,'area'=>$area,'rice'=>$rice,'given'=>$given,]);
+
+    }
+
 
 
 

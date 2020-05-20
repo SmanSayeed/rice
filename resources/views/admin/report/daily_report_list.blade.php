@@ -43,18 +43,10 @@
                         <td> {{$d->address}}</td>
                         <td><img src="{{url('/images/dealer_image')}}/{{$d->image}}" alt="no" class="rounded float-left" height="100px" width="80px"> </td>
                         <td>
-                          <?php  // echo $d->id ?>
-                        <a href="{{ url('admin/edit_dealer/'. $d->id) }}" class="btn btn-info">Edit</a>
-                        {{-- {{route('edit_dealer')}}/{{$d->id}}  " --}}
-                            <a href="{{ url('admin/delete_dealer/'. $d->id) }}"  class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item?');">Delete</a>
 
-                            @if($d->approve_key == '1')
-                            <a href="{{ url('admin/approve_dealer/'. $d->id) }}"  class="btn btn-success" onclick="return confirm('Are you sure you want to Approve?');">Approve</a>
-                            @elseif($d->approve_key == '2')
-                            <a href="{{ url('admin/unapprove_dealer/'. $d->id) }}"  class="btn btn-danger" onclick="return confirm('Are you sure you want to Unapprove?');">Unapprove</a>
-                            @endif
+                            <a href="{{ url('admin/daily_report/'.$d->id) }}"  class="btn btn-success" > আজকের রিপোর্ট দেখুন</a>
 
-                            <a href="{{ url('admin/edit_dealer_password/'. $d->id) }}" class="btn btn-warning" onclick="return confirm('Are you sure you want to change password?');">Change Password</a>
+
                         </td>
 
             </tr>

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 
 
-use DB;
+use Illuminate\Support\Facades\DB;
 use App\Dealer;
 use App\Admin;
 use App\Taker;
@@ -47,7 +47,32 @@ class DealerController extends Controller
         $dealer = $d->where('id',$id)->first();
         $rice = $r->where('dealer_id',$id)->first();
         $given = $g->where('dealer_id',$id)->get();
-        return view('dealer.home',['dealer'=>$dealer,'rice'=>$rice,'given'=>$given]);
+
+
+        // $data = DB::table('dealers')
+        // ->join('rice', 'dealers.id', '=', 'rice.dealer_id')
+        // ->join('givens', 'dealers.id', '=', 'givens.dealer_id')
+        // ->join('takers', 'takers.id', '=', 'givens.taker_id')
+        //  ->select('dealers.*', 'rice.*','givens.*','takers.*')
+
+        //  ->where('dealers.id','=',$id)
+        //   ->get();
+
+
+        $data = DB::table('rice')
+
+        ->join('takers', 'rice.area_id', '=', 'takers.area_id')
+
+         ->select( 'rice.*','takers.*')
+
+         ->where('rice.dealer_id','=',$id)
+          ->get();
+
+        //   echo '<pre>';
+        //   print_r($data);
+        //   echo '</pre>';die();
+
+        return view('dealer.home',['dealer'=>$dealer,'rice'=>$rice,'given'=>$given,'data'=>$data]);
     }
 
 

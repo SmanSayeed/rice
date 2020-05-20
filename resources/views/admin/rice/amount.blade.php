@@ -53,11 +53,11 @@
                     <form role="form" action="{{route('store_rice_amount')}}" method="post" enctype="multipart/form-data">
                         @csrf
                       <div class="card-body">
-                        <label> Dealer Name: </label>
+                        <label> ডিলার এর নাম: </label>
                         <div class="form-group">
 
                             <select class="form-control" name="dealer_id" >
-                                <option>--- Select Dealer ---</option>
+                                <option>--- ডিলার নির্বাচন ---</option>
                                 @if(!empty($data))
                                   @foreach($data as $d)
                                     <option value="{{ $d->id }}">{{ $d->name }} </option>
@@ -70,7 +70,7 @@
                           </div>
 
                           <div class="form-group">
-                            <label>Select Area</label>
+                            <label> ইউনিয়ন অথবা পৌরসভা নির্বাচন </label>
 
                             @php
                             use App\Area;
@@ -80,7 +80,7 @@
                              @endphp
 
                             <select class="form-control" name="area_id" >
-                                <option>--- Select Area ---</option>
+                                <option>--- ইউনিয়ন অথবা পৌরসভা নির্বাচন ---</option>
                                 @if(!empty($data))
                                   @foreach($data as $d)
                                     <option value="{{ $d->id }}">{{ $d->name }} </option>
@@ -92,18 +92,19 @@
 
                           </div>
 
+                          <div class="form-group">
+                            <label for=""> মোট চালের পরিমাণ </label>
+                            <input type="number" class="form-control" id="" placeholder="Enter Amount" name="dealer_rice_amount" >
+                          </div>
 
                           <div class="form-group">
-                            <label for="">Taker Limit</label>
+                            <label for=""> প্রদেয় চালের পরিমাণ </label>
                             <input type="number" class="form-control" id="" placeholder="Enter Amount" name="taker_limit" >
                           </div>
 
+
                         <div class="form-group">
-                          <label for="">Amount</label>
-                          <input type="text" class="form-control" id="" placeholder="Enter Amount" name="amount" >
-                        </div>
-                        <div class="form-group">
-                            <label for="">Giving Date</label>
+                            <label for=""> চাল প্রদানের তারিখ </label>
                             <input type="date" class="form-control" id="" placeholder="Enter Date" name="rice_giving_time" >
                           </div>
 

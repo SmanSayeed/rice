@@ -1,4 +1,4 @@
-@extends('layouts.dealer_master')
+@extends('layouts.subadmin_master')
 @section('content')
 
 <div class="container-fluid">
@@ -10,17 +10,17 @@
         </div>
         @endif
 <div class="col-md-6">
+    <h1>Sub admin</h1>
 <table class="table">
     <tr>
         <td>  বরাদ্দ চালের পরিমান</td>
-          <td>{{$rice->dealer_rice_amount}} KG</td>
+          <td>{{$rice->amount}}</td>
     </tr>
-
 
     <tr>
         <td>  ডিলারের অধীনে মোট উপকারভোগীর সংখ্যা -
         </td>
-          <td><?php echo count($data); ?></td>
+          <td><?php echo count($given); ?></td>
     </tr>
 
     <tr>
@@ -28,24 +28,40 @@
         </td>
           <td>
 
-            @php  $total = 0;  $i = 0; @endphp
-                @foreach ($given as $g)
-                    @php
-                        $timestamp =$g->created_at;  $date = date("d-m-Y");  $match_date = date('d-m-Y', strtotime($timestamp));
-                        if($date == $match_date) { $total += $g->amount;  $i = $i+1; }
-                      @endphp
+            @php
 
-                @endforeach
-            @php  echo   $total .' KG'; @endphp
+    $total = 0;
+    $i = 0;
+@endphp
+
+@foreach ($given as $g)
+
+@php
+
+            $timestamp =$g->created_at;
+            // echo $timestamp.'<br>';
+            $date = date("d-m-Y");
+            // echo $date.'<br>';
+            $match_date = date('d-m-Y', strtotime($timestamp));
+            if($date == $match_date) {
+                // echo 'yes<br>';
+
+                    $total += $g->amount;
+                    $i = $i+1;
+
+                }
+                // else {
+                //     echo 'no<br>';
+                // }
+
+@endphp
+
+@endforeach
+@php
+  echo   $total ;
+@endphp
 
           </td>
-
-
-    </tr>
-
-    <tr>
-        <td>  বর্তমান চালের পরিমাণ </td>
-          <td>{{$rice->dealer_rice_amount - $total }} KG</td>
     </tr>
 
     <tr>

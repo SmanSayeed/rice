@@ -28,6 +28,7 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
+        <img src="{{asset('main')}}/img/logo.png" alt="logo" height="50px" width="50px">
       <a class="navbar-brand" href="/">OMS DEBIDWAR </a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
@@ -37,11 +38,19 @@
         <ul class="navbar-nav ml-auto">
 
           <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
+            <a class="nav-link" href="#">সফটওয়্যার পরিচিতি</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
+            <a class="nav-link" href="#"> ইউজার ম্যানুয়েল </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#"> পরিকল্পনা ও বাস্তবায়নে</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#"> কারিগরি সহায়তায় </a>
           </li>
         </ul>
       </div>
@@ -55,12 +64,11 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="site-heading">
-            <h2>বায়োমেট্রিক পদ্ধতিতে ওএমএস এর চাল বিক্রয় </h2>
-            <a class="btn btn-info" href="dealer">ডিলার লগইন
-            </a> &nbsp&nbsp&nbsp
-            <a class="btn btn-info"  href="admin">অফিস প্রধান লগইন
 
-            </a>
+            <h2>বায়োমেট্রিক পদ্ধতিতে ওএমএস এর চাল বিক্রয় </h2>
+            <a class="btn btn-info" href="dealer" style="margin:10px">ডিলার লগইন </a>
+            <a class="btn btn-info"  href="admin" style="margin:10px">উপজেলা নির্বাহী অফিসার লগইন</a>
+            <a class="btn btn-info"  href="subadmin" style="margin:10px">উপজেলা খাদ্য নিয়ন্ত্রক লগইন</a>
           </div>
         </div>
       </div>
@@ -80,11 +88,7 @@
 
      @php  $total = 0;   $i = 0;  @endphp
 
-         @foreach ($rice as $r)
-
-               @php   $total += $r->amount;  @endphp
-
-          @endforeach
+         @foreach ($rice as $r)  @php   $total += $r->amount;  @endphp  @endforeach
 
     @php  echo   $total ;   @endphp
 

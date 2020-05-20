@@ -60,11 +60,11 @@
 
 
                         <div class="form-group">
-                          <label for="">Amount</label>
+                          <label for=""> প্রদেয় চালের পরিমাণ </label>
                           <input type="text" class="form-control" id="" placeholder="Enter Amount" name="amount" value="{{$rid->amount}}">
                         </div>
                         <div class="form-group">
-                            <label for="">Giving Date</label>
+                            <label for=""> চাল প্রদানের তারিখ </label>
                             <input type="text" class="form-control" id="" placeholder="Enter Date" name="rice_giving_time" value="{{$rid->rice_giving_time}}">
 
                           </div>

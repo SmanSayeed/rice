@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDealersTable extends Migration
+class CreateSubadminsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,19 @@ class CreateDealersTable extends Migration
      */
     public function up()
     {
-        Schema::create('dealers', function (Blueprint $table) {
+        Schema::create('subadmins', function (Blueprint $table) {
             $table->id();
+
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('phone')->unique();
-            $table->string('image');
-            $table->string('address')->nullable();
 
-            $table->timestamp('email_verified_at')->nullable();
+            $table->string('image')->unique();
+            $table->string('email_verified_at')->nullable();
             $table->string('password');
-            $table->integer('approve_key')->default(1);
+            $table->string('phone');
             $table->rememberToken();
+
+
             $table->timestamps();
         });
     }
@@ -36,6 +37,6 @@ class CreateDealersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dealers');
+        Schema::dropIfExists('subadmins');
     }
 }

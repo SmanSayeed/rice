@@ -48,6 +48,10 @@ return [
             'driver' => 'session',
             'provider' => 'dealers',
         ],
+        'subadmin' => [
+            'driver' => 'session',
+            'provider' => 'subadmin',
+        ],
 
 
         'api' => [
@@ -87,6 +91,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\Dealer::class,
         ],
+        'subadmin' => [
+            'driver' => 'eloquent',
+            'model' => App\Subadmin::class,
+        ],
 
         // 'users' => [
         //     'driver' => 'database',
@@ -124,6 +132,12 @@ return [
         ],
         'dealers' => [
             'provider' => 'dealers',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'subadmins' => [
+            'provider' => 'subadmins',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

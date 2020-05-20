@@ -161,6 +161,33 @@
           </li>
 
 
+          <li class="nav-item has-treeview menu-close">
+            <a href="#" class="nav-link ">
+              <i class="nav-icon far fa-circle text-success"></i>
+              <p>
+                রিপোর্ট
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{asset('admin/final_report_list')}}" class="nav-link ">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p> সার্বিক রিপোর্ট </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{asset('admin/daily_report_list')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p> দৈনিক রিপোর্ট  </p>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+
+
+
           <li class="nav-item">
             <a  href="{{ route('logout') }}" class="nav-link"  onclick="event.preventDefault();
             document.getElementById('logout-form').submit();">

@@ -64,7 +64,7 @@
 
 
             <td>{{$d->card_id}} </td>
-            <td>{{$d->name}} </td>
+            <td>{{$d->taker_name}} </td>
             <td>{{$d->father}} </td>
             <td>{{$d->mother}} </td>
             <td>{{$d->phone}} </td>

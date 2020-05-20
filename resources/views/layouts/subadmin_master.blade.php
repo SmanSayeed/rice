@@ -80,41 +80,85 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                <li class="nav-item">
-                <a href="{{route('dealer/home')}}" class="nav-link">
+                <a href="{{route('admin/home')}}" class="nav-link">
                   <i class="nav-icon fas fa-tachometer-alt "></i>
                   <p>Home</p>
                 </a>
               </li>
-
-
           <li class="nav-item has-treeview menu-close">
             <a href="#" class="nav-link ">
-              <i class="nav-icon far fa-circle text-success"></i>
+              <i class="nav-icon far fa-circle text-warning"></i>
               <p>
-                উপভোগকারী নির্বাচন করুন
+                ডিলার
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{asset('dealer/find_taker')}}" class="nav-link ">
+                <a href="{{asset('admin/create_dealer')}}" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>আঙুলের ছাপ নিন</p>
+                  <p>ডিলার নিয়োগ</p>
                 </a>
               </li>
-
               <li class="nav-item">
-                <a href="{{asset('dealer/find_taker')}}" class="nav-link ">
+                <a href="{{asset('admin/show_dealer')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>কার্ড আইডি পুনরুদ্ধার করুন </p>
+                  <p>ডিলার তালিকা</p>
                 </a>
               </li>
-
 
             </ul>
           </li>
 
+          <li class="nav-item has-treeview menu-close">
+            <a href="#" class="nav-link ">
+              <i class="nav-icon far fa-circle text-success"></i>
+              <p>
+                উপভোগকারী
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{asset('admin/create_taker')}}" class="nav-link ">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>উপভোগকারী নিয়োগ</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{asset('admin/show_taker')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>উপভোগকারী তালিকা</p>
+                </a>
+              </li>
 
+            </ul>
+          </li>
+
+          <li class="nav-item has-treeview menu-close">
+            <a href="#" class="nav-link ">
+              <i class="nav-icon far fa-circle text-success"></i>
+              <p>
+                চালের পরিমাণ
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{asset('admin/create_rice_amount')}}" class="nav-link ">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>ইনপুট করুন</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{asset('admin/show_rice_amount')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>চালের পরিমাণ দেখুন</p>
+                </a>
+              </li>
+
+            </ul>
+          </li>
 
 
           <li class="nav-item">
@@ -215,6 +259,11 @@
 <script src="{{asset('user')}}/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 <script src="{{asset('user')}}/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="{{asset('user')}}/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+
+
+<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js' type='text/javascript'> </script>
+<script src='scripts/CloudABIS-ScanR.js'> </script>
+<script src='scripts/CloudABIS-Helper.js'> </script>
 
 
 <!-- page script -->

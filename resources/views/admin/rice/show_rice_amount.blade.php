@@ -13,7 +13,7 @@
         <div class="col-12">
               <div class="card">
         <div class="card-header">
-          <h3 class="card-title">DataTable with default features</h3>
+          <h3 class="card-title">Dealer wise rice amount</h3>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
@@ -42,7 +42,7 @@
                         <td>{{$d->name}}
                         </td>
                         <td>{{$d->email}}</td>
-                        <td> {{$d->amount}}</td>
+                        <td> {{$d->amount}} KG</td>
                         <td> {{$d->rice_giving_time}}</td>
                         <td>
                           <?php  // echo $d->id ?>

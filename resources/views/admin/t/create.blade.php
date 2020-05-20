@@ -87,22 +87,40 @@
                         @csrf
                       <div class="card-body">
                         <div class="form-group">
-                            <label for="">Name</label>
-                            <input type="text" class="form-control" id="" placeholder="Enter Name" name="name" >
+                            <label for="">নাম</label>
+                            <input type="text" class="form-control" id="" placeholder="Enter Name" name="taker_name" >
                           </div>
 
                           <div class="form-group">
-                            <label for="">Father Name</label>
+                            <label for=""> বাবার নাম</label>
                             <input type="text" class="form-control" id="" placeholder="Enter Father Name" name="father" >
                           </div>
 
                           <div class="form-group">
-                            <label for="">Mother Name</label>
+                            <label for=""> মাতার নাম</label>
                             <input type="text" class="form-control" id="" placeholder="Enter Mother Name" name="mother" >
                           </div>
 
                           <div class="form-group">
-                            <label for="">Select Area</label>
+                            <label for=""> স্বামীর নাম </label>
+                            <input type="text" class="form-control" id="" placeholder="Enter  Husband Name" name="husband" >
+                          </div>
+
+                          <div class="form-group">
+                            <label for=""> জন্ম তারিখ </label>
+                            <input type="date" class="form-control" id="" placeholder="Enter Birth date" name="birthdate" >
+                          </div>
+
+                          <div class="form-group">
+                            <label for=""> লিঙ্গ </label><br>
+                            <input type="radio"  value="Male" name="gender" >Male<br>
+                            <input type="radio"  value="Female" name="gender" >Female<br>
+                            <input type="radio"  value="Other" name="gender" >Other<br>
+                          </div>
+
+
+                          <div class="form-group">
+                            <label for=""> ইউনিয়ন অথবা পৌরসভা </label>
                             @php
                             use App\Area;
                             $area = new Area();
@@ -111,42 +129,47 @@
                              @endphp
 
                             <select name="area_id" class="form-control">
-                                <option>--- Select Area ---</option>
+                                <option>--- ইউনিয়ন অথবা পৌরসভা নির্বাচন করুন ---</option>
                             @foreach($data as $d)
                             <option value="{{$d->id}}">{{$d->name}}</option>
                             @endforeach
 
                             </select>
                           </div>
-
                           <div class="form-group">
-                            <label for="">Village</label>
-                            <input type="text" class="form-control" id="" placeholder="Enter  Address1" name="address1" >
+                            <label for=""> ওয়ার্ড </label>
+                            <input type="text" class="form-control" id="" placeholder="Word No" name="address2" >
                           </div>
 
                           <div class="form-group">
-                            <label for="">Full Address</label>
-                            <input type="text" class="form-control" id="" placeholder="Enter Address2" name="address2" >
+                            <label for=""> গ্রাম </label>
+                            <input type="text" class="form-control" id="" placeholder="Enter  Village" name="address1" >
                           </div>
 
+
+
                           <div class="form-group">
-                            <label for="">NID</label>
-                            <input type="text" class="form-control" id="" placeholder="Enter Name" name="nid" >
+                            <label for="">এন আই ডি নং</label>
+                            <input type="text" class="form-control" id="" placeholder="Enter NID no" name="nid" >
                           </div>
 
 
 
                         <div class="form-group">
-                          <label for="">MID</label>
-                          <input type="text" class="form-control" id="" placeholder="Enter MID" name="mid" >
+                          <label for=""> বি আই ডি নং </label>
+                          <input type="text" class="form-control" id="" placeholder="Enter BID no" name="bid">
                         </div>
+
+
+
                         <div class="form-group">
-                          <label for="">BID</label>
-                          <input type="text" class="form-control" id="" placeholder="Enter BID" name="bid">
-                        </div>
+                            <label for="">এম আই ডি নং </label>
+                            <input type="text" class="form-control"  placeholder="Enter MID No" name="mid" >
+                          </div>
+
                         <div class="form-group">
-                            <label for="">Phone</label>
-                            <input type="text" class="form-control" id="" placeholder="Phone" name="phone">
+                            <label for=""> মোবাইল নং </label>
+                            <input type="text" class="form-control" id="" placeholder="Mobile no" name="phone">
                           </div>
 
                           <div class="form-group">
@@ -155,11 +178,11 @@
                         </div>
 
                         <div class="form-group">
-                          <label for="exampleInputFile">File input</label>
+                          <label for="exampleInputFile"> ছবি আপলোড </label>
                           <div class="input-group">
                             <div class="custom-file">
                               <input type="file" class="custom-file-input" name="myimg">
-                              <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                              <label class="custom-file-label" for="exampleInputFile"> ছবি সিলেক্ট করুন </label>
                             </div>
 
                           </div>
@@ -169,7 +192,7 @@
                       <!-- /.card-body -->
 
                       <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary"> সাবমিট করুন </button>
                       </div>
                     </form>
                   </div>

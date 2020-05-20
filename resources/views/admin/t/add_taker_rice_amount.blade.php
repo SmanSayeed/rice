@@ -14,9 +14,14 @@
             <div class="col-12">
                   <div class="card">
             <div class="card-header">
-              <h3 class="card-title">DataTable with default features</h3>
+              <h3 class="card-title">Add Taker Rice Amount</h3>
             </div>
             <!-- /.card-header -->
+            <form action="{{route('store_taker_rice_amount')}}" method="post">
+                @csrf
+                <input class="form-control" type="text" Placeholder="Amount of rice" name="rice_amount">
+                <input class="form-control btn btn-success" type="submit" name="submit" >
+
             <div class="card-body">
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
@@ -24,21 +29,12 @@
                   <th>Serial</th>
                   <th>Card ID</th>
                   <th>Name</th>
-                  <th>Father Name</th>
-                  <th>Mother Name</th>
-                  <th>Phone</th>
+
                   <th>Village</th>
                   <th>Full Address</th>
-
-                  <th>NID</th>
-                  <th>MID</th>
-                  <th>BID</th>
-
-
                   <th>Card Start Date</th>
                   <th>Card End Date</th>
 
-                  <th>Image</th>
                   <th>Action</th>
                 </tr>
                 </thead>
@@ -51,26 +47,15 @@
 
                 <td>@php echo $i++;  @endphp</td>
                 <td>{{$d->card_id}} </td>
-                <td>{{$d->taker_name}} </td>
-                <td>{{$d->father}} </td>
-                <td>{{$d->mother}} </td>
-                <td>{{$d->phone}} </td>
+                <td>{{$d->name}} </td>
+
                 <td>{{$d->address1}}</td>
                 <td> {{$d->address1}}</td>
-                <td>{{$d->nid}} </td>
-                <td>{{$d->mid}}</td>
-                <td> {{$d->bid}}</td>
+
 
                 <td>{{$d->card_start_date}}</td>
                 <td> {{$d->card_end_date}}</td>
-                <td><img src="{{url('/images/taker_image')}}/{{$d->image}}" alt="no" class="rounded float-left" height="100px" width="80px"> </td>
-
-                            <td>
-                            <a href="{{ url('admin/edit_dealer/'. $d->id) }}" class="btn btn-info">Edit</a>
-                            {{-- {{route('edit_dealer')}}/{{$d->id}}  " --}}
-                                <a href="{{ url('admin/delete_taker/'. $d->id) }}"  class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item?');">Delete</a>
-
-                            </td>
+                <td><input type="checkbox" name="taker[]" value="{{$d->id}}"></td>
 
                 </tr>
                 @endforeach
@@ -80,26 +65,21 @@
                     <th>Serial</th>
                     <th>Card ID</th>
                     <th>Name</th>
-                    <th>Father Name</th>
-                    <th>Mother Name</th>
-                    <th>Phone</th>
+
                     <th>Village</th>
                     <th>Full Address</th>
-
-                    <th>NID</th>
-                    <th>MID</th>
-                    <th>BID</th>
 
 
                     <th>Card Start Date</th>
                     <th>Card End Date</th>
 
-                    <th>Image</th>
                     <th>Action</th>
                 </tr>
                 </tfoot>
               </table>
             </div>
+
+        </form>
             <!-- /.card-body -->
           </div>
           <!-- /.card -->
