@@ -38,6 +38,8 @@ Route::post('admin/update_dealer_password', 'AdminController@update_dealer_passw
 Route::get('admin/delete_dealer/{id}', 'AdminController@delete_dealer')->name('delete_dealer');
 Route::get('admin/approve_dealer/{id}', 'AdminController@approve_dealer')->name('approve_dealer');
 Route::get('admin/unapprove_dealer/{id}', 'AdminController@unapprove_dealer')->name('unapprove_dealer');
+Route::get('admin/select_dealer_area', 'AdminController@select_dealer_area')->name('select_dealer_area');
+Route::post('admin/store_dealer_area', 'AdminController@store_dealer_area')->name('store_dealer_area');
 
 Route::get('admin/create_taker', 'AdminController@create_taker');
 Route::post('admin/store_taker', 'AdminController@store_taker')->name('store_taker');

@@ -18,7 +18,7 @@ class CreateRiceTable extends Migration
             $table->string('dealer_rice_amount');
             $table->bigInteger('area_id');
             $table->bigInteger('dealer_id');
-            $table->int('taker_limit');
+            $table->integer('taker_limit');
             $table->string('rice_giving_time');
             $table->timestamps();
         });

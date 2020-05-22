@@ -21,13 +21,13 @@ class CreateTakersTable extends Migration
             $table->string('mother',256);
 
 
-            $table->text('husband')->nullable;
+            $table->text('husband')->nullable();
             $table->text('birthdate');
 
             $table->text('gender');
 
-            $table->text('address1');
-            $table->text('address2',256);
+            $table->text('village');
+            $table->text('taker_word');
             $table->bigInteger('area_id');
             $table->string('nid',256);
 
@@ -35,7 +35,7 @@ class CreateTakersTable extends Migration
             $table->string('phone',256);
             $table->string('mid',256);
 
-            $table->string('card_id',256);
+            $table->integer('card_id')->unique();
 
             $table->string('card_start_date',256);
             $table->string('card_end_date',256);
@@ -48,7 +48,10 @@ class CreateTakersTable extends Migration
 
             $table->string('finger_print',256);
 
-            $table->int('taker_key')->default(1);
+            $table->integer('taker_key')->default(1);
+
+            $table->bigInteger('taker_area_id')->nullable();
+            $table->string('taker_area_name')->nullable();
         });
     }
 

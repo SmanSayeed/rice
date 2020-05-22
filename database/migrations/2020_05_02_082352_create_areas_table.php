@@ -17,6 +17,15 @@ class CreateAreasTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('district')->nullable();
+            $table->string('word_1')->nullable();
+            $table->string('word_2')->nullable();
+            $table->string('word_3')->nullable();
+            $table->string('word_4')->nullable();
+            $table->string('word_5')->nullable();
+            $table->string('word_6')->nullable();
+            $table->string('word_7')->nullable();
+            $table->string('word_8')->nullable();
+            $table->string('word_9')->nullable();
             $table->timestamps();
         });
     }

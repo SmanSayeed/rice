@@ -80,6 +80,15 @@ class DealerController extends Controller
         return view('dealer.t.find_taker');
     }
     public function action_find_taker(Request $request){
+
+        $rice = new Rice();
+
+        $id = auth()->user()->id;
+
+        $dealer_area = $rice->where('dealer_id',$id)->first();
+
+        echo $dealer_area;die();
+
         $t = new Taker();
         $data = $t->where('card_id',$request->card_id)->first();
         //  echo $data;die();
@@ -92,6 +101,15 @@ class DealerController extends Controller
         // return view('dealer.t.show',['d'=>$data]);
     }
     public function store_dealer_giving_rice(Request $request){
+
+        $rice = new Rice();
+
+        $id = auth()->user()->id;
+
+        $dealer_area = $rice->where('dealer_id',$id)->first();
+
+
+
         $g = new Given();
         if($request->taker_key == 1){
             // echo '1'.die();

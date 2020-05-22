@@ -131,19 +131,31 @@
                             <select name="area_id" class="form-control">
                                 <option>--- ইউনিয়ন অথবা পৌরসভা নির্বাচন করুন ---</option>
                             @foreach($data as $d)
-                            <option value="{{$d->id}}">{{$d->name}}</option>
+                            <option value="{{$d->id}},{{$d->name}}">{{$d->name}}</option>
                             @endforeach
 
                             </select>
                           </div>
                           <div class="form-group">
                             <label for=""> ওয়ার্ড </label>
-                            <input type="text" class="form-control" id="" placeholder="Word No" name="address2" >
+                            {{-- <input type="number" class="form-control" id="" placeholder="Word No" name="taker_word" > --}}
+
+                            @php $i = 1;   @endphp
+
+                            <select name="taker_word" class="form-control">
+                                <option>--- ওয়ার্ড---</option>
+                            @for($i=1;$i<=9;$i++)
+                            <option value="{{$i}}">{{$i}}</option>
+                            @endfor
+
+                            </select>
+
+
                           </div>
 
                           <div class="form-group">
                             <label for=""> গ্রাম </label>
-                            <input type="text" class="form-control" id="" placeholder="Enter  Village" name="address1" >
+                            <input type="text" class="form-control" id="" placeholder="Enter  Village" name="village" >
                           </div>
 
 

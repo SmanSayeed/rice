@@ -38,10 +38,13 @@
                         <label for="">Phone</label>
                         <input type="text" class="form-control" id="" placeholder="Phone" name="phone">
                       </div>
+
+
                       <div class="form-group">
                         <label for="">Address</label>
                         <input type="text" class="form-control" id="" placeholder="address" name="address">
                       </div>
+
                     <div class="form-group">
                       <label for="exampleInputFile">File input</label>
                       <div class="input-group">

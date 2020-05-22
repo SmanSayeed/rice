@@ -10,6 +10,7 @@ use App\Taker;
 use App\GIven;
 use App\User;
 use App\Rice;
+use App\Area;
 use Illuminate\Support\Facades\Hash;
 use Validator,Redirect,Response;
 use Illuminate\Support\Facades\File;
@@ -170,6 +171,206 @@ class AdminController extends Controller
 
       }
 
+      public function select_dealer_area(){
+
+        $d = new Dealer();
+        $data = $d->get();
+
+        return view('admin.d.select_dealer_area',['data'=>$data]);
+
+      }
+      public function store_dealer_area(Request $request){
+
+        // print $request->dealer_word_1;
+        // echo '<br>';
+
+        // print $request->dealer_word_2;
+        // echo '<br>';
+
+        // print $request->dealer_word_3;
+        // echo '<br>';
+
+        // print $request->dealer_word_4;
+        // echo '<br>';
+
+        // print $request->dealer_word_5;
+        // echo '<br>';
+
+        // print $request->dealer_word_6;
+        // echo '<br>';
+
+        // print $request->dealer_word_7;
+        // echo '<br>';
+
+        // print $request->dealer_word_8;
+        // echo '<br>';
+
+        // print $request->dealer_word_9;
+        // echo '<br>';
+
+        // echo $request->dealer; echo '<br>';
+        // echo $request->dealer_area; echo '<br>';
+
+
+
+        // die();
+
+
+
+        $area_field_seperate = explode(",",$request->dealer_area);
+        $area_id = $area_field_seperate[0];
+        $area_name = $area_field_seperate[1];
+
+        $dealer_field_seperate = explode(",",$request->dealer);
+        $dealer_id = $dealer_field_seperate[0];
+        $dealer_name = $dealer_field_seperate[1];
+
+        $a = new Area();
+        $d = new Dealer();
+
+        $area_data =   $a->where('id',$area_id)->first();
+        $dealer_data =   $d->where('id',$dealer_id)->first();
+
+        if($dealer_data->approve_key ==2 && $dealer_data->dealer_area_id == '' and $dealer_data->dealer_word ==''  and $check_word_area_name == $area_name){
+                if($request->dealer_word_1!='' && $area_data->word_1==''){
+                    $a->word_1 = $request->dealer;
+
+                    $d->dealer_area_id = $area_id;
+                    $d->dealer_area_name = $area_name;
+                    $d->dealer_word = $request->dealer_word_1;
+
+                    $a->where('id',$area_id)->update( ['word_1'=>$a->word_1, ]);
+                }
+                if($request->dealer_word_2!='' && $area_data->word_2==''){
+                    $a->word_2 = $request->dealer;
+
+                    $d->dealer_area_id = $area_id;
+                    $d->dealer_area_name = $area_name;
+                    $d->dealer_word = $request->dealer_word_2;
+
+                    $a->where('id',$area_id)->update( ['word_2'=>$a->word_2, ]);
+                }
+                if($request->dealer_word_3!='' && $area_data->word_3==''){
+                    $a->word_3 = $request->dealer;
+
+                    $d->dealer_area_id = $area_id;
+                    $d->dealer_area_name = $area_name;
+                    $d->dealer_word = $request->dealer_word_3;
+
+                    $a->where('id',$area_id)->update( ['word_3'=>$a->word_3, ]);
+                }
+                if($request->dealer_word_4!='' && $area_data->word_4==''){
+                    $a->word_4 = $request->dealer;
+
+                    $d->dealer_area_id = $area_id;
+                    $d->dealer_area_name = $area_name;
+                    $d->dealer_word = $request->dealer_word_4;
+
+                    $a->where('id',$area_id)->update( ['word_4'=>$a->word_4, ]);
+                }
+                if($request->dealer_word_5!='' && $area_data->word_5==''){
+                    $a->word_5 = $request->dealer;
+
+                    $d->dealer_area_id = $area_id;
+                    $d->dealer_area_name = $area_name;
+                    $d->dealer_word = $request->dealer_word_5;
+
+                    $a->where('id',$area_id)->update( ['word_5'=>$a->word_5, ]);
+                }
+                if($request->dealer_word_6!='' && $area_data->word_6==''){
+                    $a->word_6 = $request->dealer;
+
+                    $d->dealer_area_id = $area_id;
+                    $d->dealer_area_name = $area_name;
+                    $d->dealer_word = $request->dealer_word_6;
+
+                    $a->where('id',$area_id)->update( ['word_6'=>$a->word_6, ]);
+                }
+                if($request->dealer_word_7!='' && $area_data->word_7==''){
+                    $a->word_7 = $request->dealer;
+
+                    $d->dealer_area_id = $area_id;
+                    $d->dealer_area_name = $area_name;
+                    $d->dealer_word = $request->dealer_word_7;
+
+                    $a->where('id',$area_id)->update( ['word_7'=>$a->word_7, ]);
+                }
+                if($request->dealer_word_8!='' && $area_data->word_8==''){
+                    $a->word_8 = $request->dealer;
+
+                    $d->dealer_area_id = $area_id;
+                    $d->dealer_area_name = $area_name;
+                    $d->dealer_word = $request->dealer_word_8;
+
+                    $a->where('id',$area_id)->update( ['word_8'=>$a->word_8, ]);
+                }
+                if($request->dealer_word_9!='' && $area_data->word_9==''){
+                    $a->word_9 = $request->dealer;
+
+                    $d->dealer_area_id = $area_id;
+                    $d->dealer_area_name = $area_name;
+                    $d->dealer_word = $request->dealer_word_9;
+
+                    $a->where('id',$area_id)->update( ['word_9'=>$a->word_9 , ]);
+                }
+
+                // $a->save();
+                // $d->save();
+            // echo  $d->dealer_area_id; echo '<br>';
+            //     echo $d->dealer_area_name; echo '<br>';
+            //     echo $d->dealer_word; echo '<br>';
+            //     echo $a->word_1; echo '<br>';
+            //     echo $a->word_2; echo '<br>';
+            //     echo $a->word_3; echo '<br>';
+            //     echo $a->word_4; echo '<br>';
+
+            //     echo $a->word_5; echo '<br>';
+            //     echo $a->word_6; echo '<br>';
+            //     echo $a->word_7; echo '<br>';
+            //     echo $a->word_8; echo '<br>';
+
+            //     echo $a->word_9; echo '<br>';
+            //     die();
+
+
+
+            $d->where('id', $dealer_id)
+            ->update([
+                'dealer_area_id' => $d->dealer_area_id,
+                'dealer_area_name'=>$d->dealer_area_name,
+                'dealer_word'=>$d->dealer_word,
+                ]);
+
+                // $a->where('id',$area_id)
+                // ->update( [
+
+                //     'word_1'=>$a->word_1,
+                //     'word_2'=>$a->word_2,
+                //     'word_3'=>$a->word_3,
+                //     'word_4'=>$a->word_4,
+
+                //     'word_5'=>$a->word_5,
+                //     'word_6'=>$a->word_6,
+                //     'word_7'=>$a->word_7,
+                //     'word_8'=>$a->word_8,
+
+                //     'word_9'=>$a->word_9,
+
+                // ]);
+
+
+        return back()->with('success', ' Added successfully');
+
+            }else{
+                echo '<h1 style="color:red">May be you selected wrong Union or Something different problem occured</h1>';
+            }
+
+
+      }
+
+
+
+
     public function create_taker(){
 
         return view('admin.t.create');
@@ -181,12 +382,22 @@ class AdminController extends Controller
 
        $d = new Taker();
 
+       $area_field_seperate = explode(",",$request->area_id);
+    //    print_r($area_field_seperate) ;
+    //    echo $area_field_seperate[1];
+    //    echo $area_field_seperate[0];
+    //    die();
+
+       $d->area_id =  $area_field_seperate[0];
+       $d->taker_area_id =  $area_field_seperate[0];
+       $d->taker_area_name =  $area_field_seperate[1];
+
        $d->taker_name =  $request->taker_name;
        $d->father =  $request->father;
        $d->mother =  $request->mother;
-       $d->address1 =  $request->address1;
-       $d->address2 =  $request->address2;
-       $d->area_id =  $request->area_id;
+       $d->village =  $request->village;
+       $d->taker_word =  $request->taker_word;
+
 
        $d->husband =  $request->husband;
 
@@ -200,7 +411,10 @@ class AdminController extends Controller
 
        $d->mid =  $request->mid;
 
-       $d->card_id = $request->nid.rand(1,2000);
+       $digits = 5;
+        // echo rand(pow(10, $digits-1), pow(10, $digits)-1).$request->birthdate; die();
+
+       $d->card_id = rand(pow(10, $digits-1), pow(10, $digits)-1);
 
        $d->phone =  $request->phone;
 
@@ -210,7 +424,7 @@ class AdminController extends Controller
 
         $file = $request->file('myimg');
         $destinationPath = public_path(). '/images/taker_image';
-        $filename = $file->getClientOriginalName();
+        $filename = $d->card_id."_".$file->getClientOriginalName();
 
         $request->file('myimg')->move($destinationPath, $filename);
         $d->image = $filename;

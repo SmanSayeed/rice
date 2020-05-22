@@ -27,9 +27,10 @@
                   <th>Father Name</th>
                   <th>Mother Name</th>
                   <th>Phone</th>
-                  <th>Village</th>
-                  <th>Full Address</th>
+                  <th>Union</th>
 
+                  <th>Word No</th>
+                  <th>Village</th>
                   <th>NID</th>
                   <th>MID</th>
                   <th>BID</th>
@@ -55,8 +56,10 @@
                 <td>{{$d->father}} </td>
                 <td>{{$d->mother}} </td>
                 <td>{{$d->phone}} </td>
-                <td>{{$d->address1}}</td>
-                <td> {{$d->address1}}</td>
+                <td>{{$d->taker_area_name}}</td>
+
+                <td> {{$d->taker_word}}</td>
+                <td>{{$d->village}}</td>
                 <td>{{$d->nid}} </td>
                 <td>{{$d->mid}}</td>
                 <td> {{$d->bid}}</td>
@@ -83,8 +86,10 @@
                     <th>Father Name</th>
                     <th>Mother Name</th>
                     <th>Phone</th>
+                    <th>Union</th>
+
+                    <th>Word No</th>
                     <th>Village</th>
-                    <th>Full Address</th>
 
                     <th>NID</th>
                     <th>MID</th>

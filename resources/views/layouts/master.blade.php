@@ -106,6 +106,12 @@
                   <p>ডিলার তালিকা</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{asset('admin/select_dealer_area')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>ডিলার এলাকা নির্বাচন</p>
+                </a>
+              </li>
 
             </ul>
           </li>
@@ -131,6 +137,8 @@
                   <p>উপভোগকারী তালিকা</p>
                 </a>
               </li>
+
+
 
             </ul>
           </li>

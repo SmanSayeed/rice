@@ -26,6 +26,8 @@ class CreateDealersTable extends Migration
             $table->integer('approve_key')->default(1);
             $table->rememberToken();
             $table->timestamps();
+            $table->bigInteger('dealer_area_id')->nullable();
+            $table->string('dealer_area_name')->nullable();
         });
     }
 
